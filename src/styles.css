@@ -1,0 +1,39 @@
+.container {
+  max-width: 550px;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+
+#current-city,
+#current-temp,
+#current-max-temp,
+.day h6,
+.max-temp {
+  font-weight: bold;
+}
+
+.right-column {
+  text-align: right;
+}
+
+.left-column,
+.right-column,
+.col {
+  color: grey;
+}
+
+#weather-description,
+#current-city {
+  text-transform: capitalize;
+}
+
+.col {
+  text-align: center;
+}
+
+.day h6 {
+  color: black;
+}
