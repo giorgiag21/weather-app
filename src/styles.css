@@ -1,10 +1,47 @@
+body {
+  background: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+
 .container {
-  max-width: 375px;
+  max-width: 400px;
+  padding-top: 10px;
+}
+
+.card {
+  background: radial-gradient(
+    circle at 7.5% 24%,
+    rgb(237, 161, 193) 0%,
+    rgb(250, 178, 172) 25.5%,
+    rgb(190, 228, 210) 62.3%,
+    rgb(215, 248, 247) 93.8%
+  );
+  border: 1px solid #885df1;
+  border-radius: 15px;
 }
 
 button {
   border: none;
   background: transparent;
+  padding: 0%;
+  margin: 0%;
+  font-size: 18px;
+}
+
+#search-button {
+  position: relative;
+  left: -12px;
+  bottom: -7px;
+}
+
+#current-position-button {
+  position: relative;
+  left: 20px;
+  bottom: 19px;
+}
+
+#current-city,
+.day {
+  font-family: "Rampart One", cursive;
 }
 
 #current-city,
@@ -13,6 +50,10 @@ button {
 .day h6,
 .max-temp {
   font-weight: bold;
+}
+
+#current-emoji {
+  font-size: 50px;
 }
 
 .right-column {

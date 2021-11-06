@@ -11,6 +11,12 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap"
+      rel="stylesheet"
+    />
     <title>Weather App</title>
     <link rel="stylesheet" href="src/styles.css" />
   </head>
@@ -18,15 +24,9 @@
     <div class="container">
       <div class="card">
         <div class="card-body">
-          <a href="#">Rome</a>
-          <a href="#">Venice</a>
-          <a href="#">Florence</a>
-          <br />
-          <br />
-
           <form class="search-city-form">
             <div class="row">
-              <div class="col-9">
+              <div class="col-10">
                 <input
                   type="search"
                   placeholder="Enter a city here"
@@ -34,15 +34,12 @@
                   id="searched-city"
                 />
               </div>
-              <div class="col-3">
-                <button type="submit">🔍</button>
+              <div class="col-2">
+                <button type="submit" id="search-button">🔍</button>
                 <button type="button" id="current-position-button">📍</button>
-                <button type="button">⭐</button>
               </div>
             </div>
           </form>
-
-          <br />
 
           <h1>
             <div id="current-city">Milan</div>
@@ -57,7 +54,7 @@
                 <div id="weather-description">Sunny</div>
               </h6>
 
-              <div id="current-emoji">☀</div>
+              <div id="current-emoji"><p>☀</p></div>
             </div>
 
             <div class="col-6 right-column">
