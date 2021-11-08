@@ -52,8 +52,19 @@ button {
   font-weight: bold;
 }
 
-#current-emoji {
+#current-temp {
   font-size: 50px;
+  line-height: 35px;
+}
+
+.units {
+  font-size: 18px;
+  position: relative;
+  top: -25px;
+}
+
+#current-emoji {
+  font-size: 30px;
 }
 
 .right-column {

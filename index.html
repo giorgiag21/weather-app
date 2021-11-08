@@ -54,16 +54,25 @@
                 <div id="weather-description">Sunny</div>
               </h6>
 
-              <div id="current-emoji"><p>☀</p></div>
+              <div id="humidity">
+                <h6>Humidity: 45%</h6>
+              </div>
+
+              <div id="wind">
+                <h6>Wind: <span id="wind-speed">0</span>km/h</h6>
+              </div>
             </div>
 
             <div class="col-6 right-column">
               <div class="current-weather">
-                <h2>
+                <p>
+                  <span id="current-emoji">☀</span>
                   <span id="current-temp">19</span>
-                  <a href="#" id="celsius-link">°C</a>
-                  <a href="#" id="fahrenheit-link">°F</a>
-                </h2>
+                  <span class="units">
+                    <a href="#" id="celsius-link">°C</a> |
+                    <a href="#" id="fahrenheit-link">°F</a>
+                  </span>
+                </p>
               </div>
 
               <div class="current-max-min">
@@ -71,14 +80,6 @@
                   <span id="current-max-temp">20</span>°C /
                   <span id="current-min-temp">7</span>°C
                 </h6>
-              </div>
-
-              <div id="precipitation">
-                <h6>Precipitation: 45%</h6>
-              </div>
-
-              <div>
-                <h6>Wind: <span id="wind-speed">0</span>km/h</h6>
               </div>
             </div>
           </div>
