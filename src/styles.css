@@ -40,8 +40,10 @@ button {
 }
 
 #current-city,
+#current-temp,
 .day {
   font-family: "Rampart One", cursive;
+  color: black;
 }
 
 #current-city,
@@ -61,10 +63,6 @@ button {
   font-size: 18px;
   position: relative;
   top: -25px;
-}
-
-#current-emoji {
-  font-size: 30px;
 }
 
 .right-column {

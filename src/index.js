@@ -46,7 +46,6 @@ function getCity(city) {
   let unit = "metric";
   let apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?`;
   let apiUrl = `${apiEndpoint}q=${city}&appid=${apiKey}&units=${unit}`;
-
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -69,9 +68,20 @@ function displayWeather(response) {
   );
   currentWeatherDescription.innerHTML = `${weatherDescription}`;
 
+  let humidity = response.data.main.humidity;
+  let currentHumidity = document.querySelector("#current-humidity");
+  currentHumidity.innerHTML = `${humidity}`;
+
   let windSpeed = response.data.wind.speed;
   let currentWindSpeed = document.querySelector("#wind-speed");
   currentWindSpeed.innerHTML = `${windSpeed}`;
+
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function getCurrentPosition() {
