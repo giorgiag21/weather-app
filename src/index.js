@@ -123,6 +123,8 @@ function convertToCelsius() {
 
 getCurrentDate();
 
+getCity("Milan");
+
 let searchCityForm = document.querySelector(".search-city-form");
 searchCityForm.addEventListener("submit", handleSubmit);
 
