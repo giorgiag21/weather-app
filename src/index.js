@@ -50,9 +50,9 @@ function getCity(city) {
 }
 
 function displayWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
   let currentTemperature = document.querySelector("#current-temp");
-  currentTemperature.innerHTML = `${temperature}`;
+  currentTemperature.innerHTML = Math.round(`${celsiusTemperature}`);
 
   let maxTemperature = Math.round(response.data.main.temp_max);
   let currentMaxTemperature = document.querySelector("#current-max-temp");
@@ -109,21 +109,25 @@ function getCurrentLocationName(response) {
 
 function convertToFahrenheit(event) {
   event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let currentTemperature = document.querySelector("#current-temp");
-  let temperature = currentTemperature.innerHTML;
-  temperature = Number(temperature);
-  currentTemperature.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  currentTemperature.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
 }
 
-function convertToCelsius() {
+function convertToCelsius(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let currentTemperature = document.querySelector("#current-temp");
-  let temperature = currentTemperature.innerHTML;
-  currentTemperature.innerHTML = Math.round(((temperature - 32) * 5) / 9);
+  currentTemperature.innerHTML = Math.round(celsiusTemperature);
 }
 
 getCurrentDate();
 
 getCity("Milan");
+
+let celsiusTemperature = null;
 
 let searchCityForm = document.querySelector(".search-city-form");
 searchCityForm.addEventListener("submit", handleSubmit);

@@ -59,10 +59,23 @@ button {
   line-height: 35px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .units {
   font-size: 18px;
   position: relative;
   top: -25px;
+}
+
+.active {
+  color: black;
+  cursor: default;
+}
+
+.active:hover {
+  color: black;
 }
 
 .right-column {
