@@ -86,6 +86,39 @@ function displayWeather(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
 }
 
+function displayForecast() {
+  let forecast = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col">
+      <div class="day">
+        <h6>${day}</h6>
+      </div>
+
+      <div class="date">
+        <h6>18/10</h6>
+      </div>
+
+      <div class="emoji">
+        <h2>⛅</h2>
+      </div>
+
+      <div class="max-min">
+        <h6><span class="max-temp">17°</span> / 6°</h6>
+      </div>
+    </div>
+    `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(inputCurrentPosition);
 }
@@ -141,3 +174,5 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 let celsiusLink = document.querySelector("#celsius-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 celsiusLink.addEventListener("click", convertToCelsius);
+
+displayForecast();
