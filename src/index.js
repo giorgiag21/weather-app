@@ -4,20 +4,22 @@ function getCurrentDate() {
 
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[now.getDay()];
+
   let date = now.getDate();
+
   let months = [
-    "01",
-    "02",
-    "03",
-    "04",
-    "05",
-    "06",
-    "07",
-    "08",
-    "09",
-    "10",
-    "11",
-    "12",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
   let month = months[now.getMonth()];
   let hours = now.getHours();
@@ -28,8 +30,8 @@ function getCurrentDate() {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  let year = now.getFullYear();
-  currentDate.innerHTML = `${day} ${date}/${month} ${hours}:${minutes}`;
+
+  currentDate.innerHTML = `${day}, ${date} ${month}, ${hours}:${minutes}`;
 }
 
 function handleSubmit(event) {

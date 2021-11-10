@@ -1,9 +1,23 @@
-body {
-  background: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+button {
+  border: none;
+  background: transparent;
+  padding: 0%;
+  margin: 0%;
+  font-size: 18px;
+}
+
+img {
+  float: left;
+  position: relative;
+  top: -27px;
+}
+
+a {
+  text-decoration: none;
 }
 
 .container {
-  max-width: 400px;
+  max-width: 450px;
   padding-top: 10px;
 }
 
@@ -19,24 +33,16 @@ body {
   border-radius: 15px;
 }
 
-button {
-  border: none;
-  background: transparent;
-  padding: 0%;
-  margin: 0%;
-  font-size: 18px;
-}
-
 #search-button {
   position: relative;
-  left: -12px;
+  left: -7px;
   bottom: -7px;
 }
 
 #current-position-button {
   position: relative;
-  left: 20px;
-  bottom: 19px;
+  left: 5px;
+  bottom: -7px;
 }
 
 #current-city,
@@ -59,8 +65,9 @@ button {
   line-height: 35px;
 }
 
-a {
-  text-decoration: none;
+.current-max-min {
+  position: relative;
+  bottom: -5px;
 }
 
 .units {
@@ -82,6 +89,7 @@ a {
   text-align: right;
 }
 
+#current-date,
 .left-column,
 .right-column,
 .col {
