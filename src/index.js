@@ -63,13 +63,13 @@ function displayWeather(response) {
   let currentTemperature = document.querySelector("#current-temp");
   currentTemperature.innerHTML = Math.round(`${celsiusTemperature}`);
 
-  let maxTemperature = Math.round(response.data.main.temp_max);
+  let maxTemperature = response.data.main.temp_max;
   let currentMaxTemperature = document.querySelector("#current-max-temp");
-  currentMaxTemperature.innerHTML = `${maxTemperature}`;
+  currentMaxTemperature.innerHTML = Math.round(`${maxTemperature}`);
 
-  let minTemperature = Math.round(response.data.main.temp_min);
+  let minTemperature = response.data.main.temp_min;
   let currentMinTemperature = document.querySelector("#current-min-temp");
-  currentMinTemperature.innerHTML = `${minTemperature}`;
+  currentMinTemperature.innerHTML = Math.round(`${minTemperature}`);
 
   let weatherDescription = response.data.weather[0].description;
   let currentWeatherDescription = document.querySelector(
