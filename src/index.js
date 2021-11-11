@@ -34,6 +34,13 @@ function getCurrentDate() {
   currentDate.innerHTML = `${day}, ${date} ${month}, ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function handleSubmit(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#searched-city");
@@ -97,37 +104,48 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-function displayForecast() {
-  let forecast = document.querySelector("#weather-forecast");
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6 && index > 0) {
+      forecastHTML =
+        forecastHTML +
+        `
     <div class="col">
       <div class="day">
-        <h6>${day}</h6>
+        <h6>${formatDay(forecastDay.dt)}</h6>
       </div>
 
       <div class="date">
         <h6>18/10</h6>
       </div>
 
-      <div class="emoji">
-        <h2>⛅</h2>
-      </div>
-
+      
+        <img
+          src="https://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
+      
+      
       <div class="max-min">
-        <h6><span class="max-temp">17°</span> / 6°</h6>
+        <span class="max-temp">${Math.round(
+          forecastDay.temp.max
+        )}°</span> <span>${Math.round(forecastDay.temp.min)}°</span>
       </div>
     </div>
     `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
-  forecast.innerHTML = forecastHTML;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function getCurrentPosition() {
