@@ -96,7 +96,6 @@ function displayWeather(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "d81f820cfaf81e0086fca627dfb90697";
   let unit = "metric";
   let endPoint = `https://api.openweathermap.org/data/2.5/onecall?`;
@@ -124,7 +123,7 @@ function displayForecast(response) {
         <h6>18/10</h6>
       </div>
 
-      
+      <div class="weather-icon">
         <img
           src="https://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
@@ -132,7 +131,7 @@ function displayForecast(response) {
           alt=""
           width="42"
         />
-      
+      </div>
       
       <div class="max-min">
         <span class="max-temp">${Math.round(
