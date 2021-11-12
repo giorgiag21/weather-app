@@ -59,9 +59,9 @@ function getCity(city) {
 }
 
 function displayWeather(response) {
-  celsiusTemperature = response.data.main.temp;
+  let temperature = response.data.main.temp;
   let currentTemperature = document.querySelector("#current-temp");
-  currentTemperature.innerHTML = Math.round(`${celsiusTemperature}`);
+  currentTemperature.innerHTML = Math.round(`${temperature}`);
 
   let maxTemperature = response.data.main.temp_max;
   let currentMaxTemperature = document.querySelector("#current-max-temp");
@@ -119,10 +119,6 @@ function displayForecast(response) {
         <h6>${formatDay(forecastDay.dt)}</h6>
       </div>
 
-      <div class="date">
-        <h6>18/10</h6>
-      </div>
-
       <div class="weather-icon">
         <img
           src="https://openweathermap.org/img/wn/${
@@ -170,37 +166,14 @@ function getCurrentLocationName(response) {
   getCity(city);
 }
 
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let currentTemperature = document.querySelector("#current-temp");
-  currentTemperature.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let currentTemperature = document.querySelector("#current-temp");
-  currentTemperature.innerHTML = Math.round(celsiusTemperature);
-}
-
 getCurrentDate();
 
 getCity("Milan");
-
-let celsiusTemperature = null;
 
 let searchCityForm = document.querySelector(".search-city-form");
 searchCityForm.addEventListener("submit", handleSubmit);
 
 let currentPositionButton = document.querySelector("#current-position-button");
 currentPositionButton.addEventListener("click", getCurrentPosition);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-let celsiusLink = document.querySelector("#celsius-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-celsiusLink.addEventListener("click", convertToCelsius);
 
 displayForecast();
