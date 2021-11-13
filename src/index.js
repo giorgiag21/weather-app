@@ -1,6 +1,5 @@
-function getCurrentDate() {
-  let now = new Date();
-  let currentDate = document.querySelector("#current-date");
+function getCurrentDate(timestamp) {
+  let now = new Date(timestamp);
 
   let days = [
     "Sunday",
@@ -40,7 +39,7 @@ function getCurrentDate() {
     minutes = `0${minutes}`;
   }
 
-  currentDate.innerHTML = `${day}, ${date} ${month}, ${hours}:${minutes}`;
+  return `${day}, ${date} ${month}, ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
@@ -68,6 +67,9 @@ function getCity(city) {
 }
 
 function displayWeather(response) {
+  let currentDate = document.querySelector("#current-date");
+  currentDate.innerHTML = getCurrentDate(response.data.dt * 1000);
+
   celsiusTemperature = response.data.main.temp;
   let currentTemperature = document.querySelector("#current-temp");
   currentTemperature.innerHTML = Math.round(`${celsiusTemperature}`);
@@ -223,8 +225,6 @@ function convertToCelsius(event) {
     dayMin.innerHTML = Math.round(celsiusForecast[index].min);
   });
 }
-
-getCurrentDate();
 
 let celsiusTemperature = null;
 let celsiusMaxTemperature = null;
