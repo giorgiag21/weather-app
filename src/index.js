@@ -15,6 +15,22 @@ function getCurrentDate() {
 
   let date = now.getDate();
 
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[now.getMonth()];
+
   let hours = now.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -24,7 +40,7 @@ function getCurrentDate() {
     minutes = `0${minutes}`;
   }
 
-  currentDate.innerHTML = `${day}, ${hours}:${minutes}`;
+  currentDate.innerHTML = `${day}, ${date} ${month}, ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
@@ -52,17 +68,17 @@ function getCity(city) {
 }
 
 function displayWeather(response) {
-  let temperature = response.data.main.temp;
+  celsiusTemperature = response.data.main.temp;
   let currentTemperature = document.querySelector("#current-temp");
-  currentTemperature.innerHTML = Math.round(`${temperature}`);
+  currentTemperature.innerHTML = Math.round(`${celsiusTemperature}`);
 
-  let maxTemperature = response.data.main.temp_max;
+  celsiusMaxTemperature = response.data.main.temp_max;
   let currentMaxTemperature = document.querySelector("#current-max-temp");
-  currentMaxTemperature.innerHTML = Math.round(`${maxTemperature}`);
+  currentMaxTemperature.innerHTML = Math.round(`${celsiusMaxTemperature}`);
 
-  let minTemperature = response.data.main.temp_min;
+  celsiusMinTemperature = response.data.main.temp_min;
   let currentMinTemperature = document.querySelector("#current-min-temp");
-  currentMinTemperature.innerHTML = Math.round(`${minTemperature}`);
+  currentMinTemperature.innerHTML = Math.round(`${celsiusMinTemperature}`);
 
   let weatherDescription = response.data.weather[0].description;
   let currentWeatherDescription = document.querySelector(
@@ -76,7 +92,7 @@ function displayWeather(response) {
 
   let windSpeed = response.data.wind.speed;
   let currentWindSpeed = document.querySelector("#wind-speed");
-  currentWindSpeed.innerHTML = `${windSpeed}`;
+  currentWindSpeed.innerHTML = Math.round(`${windSpeed}`);
 
   let icon = document.querySelector("#icon");
   icon.setAttribute(
@@ -97,7 +113,8 @@ function getForecast(coordinates) {
 }
 
 function displayForecast(response) {
-  let forecast = response.data.daily;
+  forecast = response.data.daily;
+  console.log(forecast);
 
   let forecastElement = document.querySelector("#weather-forecast");
 
@@ -105,6 +122,10 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay, index) {
     if (index < 6 && index > 0) {
+      celsiusForecast[index] = {
+        max: forecastDay.temp.max,
+        min: forecastDay.temp.min,
+      };
       forecastHTML =
         forecastHTML +
         `
@@ -124,9 +145,11 @@ function displayForecast(response) {
       </div>
       
       <div class="max-min">
-        <span class="max-temp">${Math.round(
+        <span class="max-temp" id="max-temp-${index}">${Math.round(
           forecastDay.temp.max
-        )}°</span> <span>${Math.round(forecastDay.temp.min)}°</span>
+        )}</span>° <span id="min-temp-${index}">${Math.round(
+          forecastDay.temp.min
+        )}</span>°
       </div>
     </div>
     `;
@@ -160,7 +183,60 @@ function getCurrentLocationName(response) {
   getCity(city);
 }
 
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let currentTemperature = document.querySelector("#current-temp");
+  currentTemperature.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
+  let currentMaxTemperature = document.querySelector("#current-max-temp");
+  currentMaxTemperature.innerHTML = Math.round(
+    (celsiusMaxTemperature * 9) / 5 + 32
+  );
+  let currentMinTemperature = document.querySelector("#current-min-temp");
+  currentMinTemperature.innerHTML = Math.round(
+    (celsiusMinTemperature * 9) / 5 + 32
+  );
+
+  [1, 2, 3, 4, 5].forEach(function (index) {
+    let dayMax = document.querySelector(`#max-temp-${index}`);
+    let dayMin = document.querySelector(`#min-temp-${index}`);
+    dayMax.innerHTML = Math.round((celsiusForecast[index].max * 9) / 5 + 32);
+    dayMin.innerHTML = Math.round((celsiusForecast[index].min * 9) / 5 + 32);
+  });
+}
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let currentTemperature = document.querySelector("#current-temp");
+  currentTemperature.innerHTML = Math.round(celsiusTemperature);
+  let currentMaxTemperature = document.querySelector("#current-max-temp");
+  currentMaxTemperature.innerHTML = Math.round(celsiusMaxTemperature);
+  let currentMinTemperature = document.querySelector("#current-min-temp");
+  currentMinTemperature.innerHTML = Math.round(celsiusMinTemperature);
+  [1, 2, 3, 4, 5].forEach(function (index) {
+    let dayMax = document.querySelector(`#max-temp-${index}`);
+    let dayMin = document.querySelector(`#min-temp-${index}`);
+    dayMax.innerHTML = Math.round(celsiusForecast[index].max);
+    dayMin.innerHTML = Math.round(celsiusForecast[index].min);
+  });
+}
+
 getCurrentDate();
+
+let celsiusTemperature = null;
+let celsiusMaxTemperature = null;
+let celsiusMinTemperature = null;
+let forecast = null;
+let celsiusForecast = [
+  { max: 0, min: 0 },
+  { max: 0, min: 0 },
+  { max: 0, min: 0 },
+  { max: 0, min: 0 },
+  { max: 0, min: 0 },
+];
 
 getCity("Milan");
 
@@ -169,5 +245,10 @@ searchCityForm.addEventListener("submit", handleSubmit);
 
 let currentPositionButton = document.querySelector("#current-position-button");
 currentPositionButton.addEventListener("click", getCurrentPosition);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+let celsiusLink = document.querySelector("#celsius-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+celsiusLink.addEventListener("click", convertToCelsius);
 
 displayForecast();

@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 520px;
   padding-top: 10px;
 }
 
@@ -70,15 +70,16 @@ a {
   bottom: -5px;
 }
 
-#unit {
+.units {
   font-size: 18px;
   position: relative;
   top: -25px;
 }
 
 .active {
-  color: black;
+  color: #142d4c;
   cursor: default;
+  font-weight: bold;
 }
 
 .active:hover {
