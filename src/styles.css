@@ -45,15 +45,14 @@ a {
 }
 
 #current-city,
+#country,
 #current-temp,
 #unit,
 #day {
   color: #142d4c;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
-#current-city,
-#current-temp,
 #current-max-temp,
 .day h6,
 .max-temp {

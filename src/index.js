@@ -52,9 +52,7 @@ function formatDay(timestamp) {
 function handleSubmit(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#searched-city");
-  let currentCity = document.querySelector("#current-city");
   let city = searchedCity.value;
-  currentCity.innerHTML = `${city}`;
   getCity(city);
 }
 
@@ -62,13 +60,21 @@ function getCity(city) {
   let apiKey = "d81f820cfaf81e0086fca627dfb90697";
   let unit = "metric";
   let apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?`;
-  let apiUrl = `${apiEndpoint}q=${city}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `${apiEndpoint}q=${city},${country}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(displayWeather);
 }
 
 function displayWeather(response) {
   let currentDate = document.querySelector("#current-date");
   currentDate.innerHTML = getCurrentDate(response.data.dt * 1000);
+
+  let city = response.data.name;
+  let currentCity = document.querySelector("#current-city");
+  currentCity.innerHTML = city;
+
+  let country = response.data.sys.country;
+  currentCountry = document.querySelector("#country");
+  currentCountry.innerHTML = country;
 
   celsiusTemperature = response.data.main.temp;
   let currentTemperature = document.querySelector("#current-temp");
@@ -116,7 +122,6 @@ function getForecast(coordinates) {
 
 function displayForecast(response) {
   forecast = response.data.daily;
-  console.log(forecast);
 
   let forecastElement = document.querySelector("#weather-forecast");
 
