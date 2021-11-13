@@ -128,7 +128,7 @@ function displayForecast(response) {
   let forecastHTML = `<div class="row">`;
 
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6 && index > 0) {
+    if (index < 7 && index > 0) {
       celsiusForecast[index] = {
         max: forecastDay.temp.max,
         min: forecastDay.temp.min,
@@ -205,7 +205,7 @@ function convertToFahrenheit(event) {
     (celsiusMinTemperature * 9) / 5 + 32
   );
 
-  [1, 2, 3, 4, 5].forEach(function (index) {
+  [1, 2, 3, 4, 5, 6].forEach(function (index) {
     let dayMax = document.querySelector(`#max-temp-${index}`);
     let dayMin = document.querySelector(`#min-temp-${index}`);
     dayMax.innerHTML = Math.round((celsiusForecast[index].max * 9) / 5 + 32);
@@ -223,7 +223,7 @@ function convertToCelsius(event) {
   currentMaxTemperature.innerHTML = Math.round(celsiusMaxTemperature);
   let currentMinTemperature = document.querySelector("#current-min-temp");
   currentMinTemperature.innerHTML = Math.round(celsiusMinTemperature);
-  [1, 2, 3, 4, 5].forEach(function (index) {
+  [1, 2, 3, 4, 5, 6].forEach(function (index) {
     let dayMax = document.querySelector(`#max-temp-${index}`);
     let dayMin = document.querySelector(`#min-temp-${index}`);
     dayMax.innerHTML = Math.round(celsiusForecast[index].max);
@@ -236,6 +236,7 @@ let celsiusMaxTemperature = null;
 let celsiusMinTemperature = null;
 let forecast = null;
 let celsiusForecast = [
+  { max: 0, min: 0 },
   { max: 0, min: 0 },
   { max: 0, min: 0 },
   { max: 0, min: 0 },
