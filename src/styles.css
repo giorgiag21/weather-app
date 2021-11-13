@@ -1,3 +1,19 @@
+body {
+  background: #ececec;
+}
+
+.container {
+  max-width: 500px;
+  padding-top: 10px;
+}
+
+.card {
+  background: #9fd3c7;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 button {
   border: none;
   background: transparent;
@@ -16,17 +32,6 @@ a {
   text-decoration: none;
 }
 
-.container {
-  max-width: 700px;
-  padding-top: 10px;
-}
-
-.card {
-  background-color: transparent;
-  border: 1px solid #885df1;
-  border-radius: 15px;
-}
-
 #search-button {
   position: relative;
   left: -7px;
@@ -41,9 +46,10 @@ a {
 
 #current-city,
 #current-temp,
-.day {
-  font-family: "Rampart One", cursive;
-  color: black;
+#unit,
+#day {
+  color: #142d4c;
+  font-weight: bolder;
 }
 
 #current-city,
@@ -64,7 +70,7 @@ a {
   bottom: -5px;
 }
 
-.units {
+#unit {
   font-size: 18px;
   position: relative;
   top: -25px;

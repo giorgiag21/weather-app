@@ -2,26 +2,19 @@ function getCurrentDate() {
   let now = new Date();
   let currentDate = document.querySelector("#current-date");
 
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   let day = days[now.getDay()];
 
   let date = now.getDate();
 
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  let month = months[now.getMonth()];
   let hours = now.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -31,7 +24,7 @@ function getCurrentDate() {
     minutes = `0${minutes}`;
   }
 
-  currentDate.innerHTML = `${day}, ${date} ${month}, ${hours}:${minutes}`;
+  currentDate.innerHTML = `${day}, ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
@@ -105,6 +98,7 @@ function getForecast(coordinates) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -115,8 +109,8 @@ function displayForecast(response) {
         forecastHTML +
         `
     <div class="col">
-      <div class="day">
-        <h6>${formatDay(forecastDay.dt)}</h6>
+      <div>
+        <h6 id="day">${formatDay(forecastDay.dt)}</h6>
       </div>
 
       <div class="weather-icon">
