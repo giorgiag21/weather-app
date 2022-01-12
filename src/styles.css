@@ -139,7 +139,19 @@ footer {
 
   .weather-info .row {
     display: grid;
-    grid-template-columns: 1fr 0.3fr 1.5fr;
+    grid-template-columns: 1fr 0.2fr 1.8fr;
+  }
+
+  .weather-info .left-column {
+    padding-right: 0;
+  }
+
+  .weather-info .center-column {
+    padding: 0;
+  }
+
+  .weather-info .right-column {
+    padding-left: 0;
   }
 
   #weather-forecast .row {
