@@ -11,7 +11,6 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-
     <title>Weather App</title>
     <link rel="stylesheet" href="src/styles.css" />
   </head>
@@ -46,34 +45,39 @@
             </h6>
           </div>
           <br />
-          <div class="row">
-            <div class="col-6 left-column">
-              <h6>
-                <div id="weather-description"></div>
-              </h6>
+          <div class="weather-info">
+            <div class="row">
+              <div class="col left-column">
+                <h6>
+                  <div id="weather-description"></div>
+                </h6>
 
-              <div>
-                <h6>Humidity: <span id="current-humidity"></span>%</h6>
+                <div>
+                  <h6>Humidity: <span id="current-humidity"></span>%</h6>
+                </div>
+
+                <div id="wind">
+                  <h6>Wind: <span id="wind-speed">0</span> km/h</h6>
+                </div>
               </div>
 
-              <div id="wind">
-                <h6>Wind: <span id="wind-speed">0</span> km/h</h6>
-              </div>
-            </div>
-
-            <div class="col-6 right-column">
-              <div class="current-weather">
+              <div class="col center-column">
                 <img src="" alt="" id="icon" />
-                <span id="current-temp"></span>
-                <span class="units">
-                  <a href="#" id="celsius-link" class="active">°C</a> |
-                  <a href="#" id="fahrenheit-link">°F</a>
-                </span>
-                <br />
+              </div>
 
-                <div class="current-max-min">
-                  <span id="current-max-temp"></span>°
-                  <span id="current-min-temp"></span>°
+              <div class="col right-column">
+                <div class="current-weather">
+                  <span id="current-temp"></span>
+                  <span class="units">
+                    <a href="#" id="celsius-link" class="active">°C</a> |
+                    <a href="#" id="fahrenheit-link">°F</a>
+                  </span>
+                  <br />
+
+                  <div class="current-max-min">
+                    <span id="current-max-temp"></span>°
+                    <span id="current-min-temp"></span>°
+                  </div>
                 </div>
               </div>
             </div>

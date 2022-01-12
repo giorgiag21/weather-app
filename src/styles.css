@@ -4,13 +4,12 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 500px;
   padding-top: 30px;
 }
 
 .card {
   background: rgba(159, 211, 199, 0.5);
-
   border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.2);
@@ -34,16 +33,13 @@ a {
   text-decoration: none;
 }
 
-#search-button {
-  position: relative;
-  left: -7px;
-  bottom: -7px;
+.search-city-form .col-2 {
+  padding: 0;
 }
 
+#search-button,
 #current-position-button {
-  position: relative;
-  left: 5px;
-  bottom: -7px;
+  margin: 5px 8px;
 }
 
 #current-city,
@@ -87,7 +83,15 @@ a {
   color: black;
 }
 
-.right-column {
+.weather-info .left-column {
+  text-align: left;
+}
+
+#icon {
+  text-align: center;
+}
+
+.weather-info .right-column {
   text-align: right;
 }
 
@@ -114,4 +118,33 @@ a {
 .weather-icon img {
   float: none;
   top: 0;
+}
+
+footer {
+  margin-bottom: 100px;
+}
+
+@media (max-width: 576px) {
+  .search-city-form .col-2 {
+    padding: 0;
+  }
+
+  #search-button {
+    margin: 5px 3px 5px 0;
+  }
+
+  #current-position-button {
+    margin: 5px 3px;
+  }
+
+  .weather-info .row {
+    display: grid;
+    grid-template-columns: 1fr 0.3fr 1.5fr;
+  }
+
+  #weather-forecast .row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
 }
