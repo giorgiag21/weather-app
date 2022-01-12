@@ -125,12 +125,16 @@ footer {
 }
 
 @media (max-width: 576px) {
+  .search-city-form .col-10 {
+    padding: 0 6px;
+  }
+
   .search-city-form .col-2 {
     padding: 0;
   }
 
   #search-button {
-    margin: 5px 3px 5px 0;
+    margin: 5px 2px 5px 0;
   }
 
   #current-position-button {
