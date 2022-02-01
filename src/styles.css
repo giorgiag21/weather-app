@@ -163,4 +163,8 @@ footer {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
+
+  footer {
+    margin-bottom: 50px;
+  }
 }
